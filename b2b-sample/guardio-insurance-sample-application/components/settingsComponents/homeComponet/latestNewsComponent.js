@@ -16,42 +16,119 @@
  * under the License.
  */
 
-import React from 'react'
-import { FlexboxGrid, Panel } from 'rsuite'
+import React, { useEffect, useState } from 'react'
+import { Divider, FlexboxGrid, Panel } from 'rsuite'
 import newsList from '../../../util/news/news.json'
 import NewsComponent from './newsComponent'
+import { Bar, Line, Radar } from "react-chartjs-2";
+import { checkIfJSONisEmpty } from '../../../util/util/common/common';
 
 export default function LatestNewsComponent() {
 
+    const priceMap = (price)=> {
+        if(price > 10) {
+            return Math.random()*8;
+        } else if (price < 4) {
+            return Math.random()*8 - 4
+        }
+    }
+
+    useEffect(() => {
+        const fetchPrices = async () => {
+            const res = await fetch("https://api.coincap.io/v2/assets/?limit=10");
+            const data = await res.json()
+            setChartData({
+                labels: data.data.map((crypto) => crypto.name),
+                datasets: [
+                    {   
+                        fill: true,
+                        label: "Price in USD",
+                        data: data.data.map((crypto) => crypto.priceUsd > 10 ? Math.random()*8 : crypto.priceUsd),
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: [
+                            "#ffbb11",
+                            "#ecf0f1",
+                            "#50AF95",
+                            "#f3ba2f",
+                            "#2a71d0"
+                        ]
+                    }
+                ]
+            });
+        };
+
+
+        fetchPrices()
+    }, []);
+
+    const [chartData, setChartData] = useState({})
+    console.log(chartData);
     return (
         <div>
             <br />
-            <h3>Latest News</h3>
+            <h3>Recent Information</h3>
+
+            <FlexboxGrid justify="start">
+                <FlexboxGrid.Item colspan={24}> {
+                    !checkIfJSONisEmpty(chartData)
+                        ? <Line data={chartData} options={{
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: "Cryptocurrency prices"
+                                },
+                                legend: {
+                                    display: true,
+                                    position: "bottom"
+                                }
+                            }
+                        }} />
+                        : <></>
+                }</FlexboxGrid.Item>
+            </FlexboxGrid>
+
+            <Divider />
+
             <FlexboxGrid justify="start">
                 {
-                    newsList.news.map(news => {
+                    !checkIfJSONisEmpty(chartData)
+                        ? <Bar data={chartData} options={{
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: "Cryptocurrency prices"
+                                },
+                                legend: {
+                                    display: true,
+                                    position: "bottom"
+                                }
+                            }
+                        }} />
+                        : <></>
+                }
 
-                        return (
-                            <FlexboxGrid.Item key={news.id*-1} colspan={12}>
-                                <Panel>
-                                    <NewsComponent imgSrc={news.image} header={news.header} body={news.body}/>
-                                </Panel>
-                            </FlexboxGrid.Item>
-                        )
-                    })
+            </FlexboxGrid>
+           
+            <Divider />
+            
+            <FlexboxGrid justify="start">
+                {
+                    !checkIfJSONisEmpty(chartData)
+                        ? <Radar data={chartData} options={{
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: "Cryptocurrency prices"
+                                },
+                                legend: {
+                                    display: false,
+                                    position: "bottom"
+                                }
+                            }
+                        }} />
+                        : <></>
                 }
-                 {
-                    newsList.news.map(news => {
-                        
-                        return (
-                            <FlexboxGrid.Item key={news.id*1} colspan={12}>
-                                <Panel>
-                                    <NewsComponent imgSrc={news.image} header={news.header} body={news.body}/>
-                                </Panel>
-                            </FlexboxGrid.Item>
-                        )
-                    })
-                }
+
             </FlexboxGrid>
         </div>
     )
