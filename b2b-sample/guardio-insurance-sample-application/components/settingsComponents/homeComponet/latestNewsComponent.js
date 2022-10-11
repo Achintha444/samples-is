@@ -75,7 +75,7 @@ export default function LatestNewsComponent() {
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: "Cryptocurrency prices"
+                                    text: "Connection Rates"
                                 },
                                 legend: {
                                     display: true,
@@ -96,7 +96,7 @@ export default function LatestNewsComponent() {
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: "Cryptocurrency prices"
+                                    text: "Connection Prices"
                                 },
                                 legend: {
                                     display: true,
@@ -118,7 +118,7 @@ export default function LatestNewsComponent() {
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: "Cryptocurrency prices"
+                                    text: "Connection Secured Prices"
                                 },
                                 legend: {
                                     display: false,
