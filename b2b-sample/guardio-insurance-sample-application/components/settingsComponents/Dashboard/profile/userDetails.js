@@ -20,27 +20,13 @@ import Image from 'next/image';
 import React from 'react';
 import { Col, FlexboxGrid, Grid, Input, Row } from 'rsuite';
 
-import profileImage from '../../../../public/internal/profile.svg';
-import styles from '../../../../styles/Settings.module.css';
+
 
 export default function UserDetails(props) {
     
     return (
         <div>
-            <FlexboxGrid justify="space-between" align="middle">
-
-                <FlexboxGrid.Item colspan={4}><div className={styles.profileImage}>
-                    <Image src={profileImage} alt="profile image" />
-                </div></FlexboxGrid.Item>
-                <FlexboxGrid.Item colspan={20}>
-                    <div >
-                        <h1>{props.me.firstName}</h1>
-                        <h6>{props.me.id}</h6>
-                    </div>
-
-                </FlexboxGrid.Item>
-
-            </FlexboxGrid>
+          
 
             <UserDetailsSection me={props.me} />
 

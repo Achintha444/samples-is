@@ -19,7 +19,7 @@
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
 import React, { useEffect, useState } from 'react';
-import { Button, Divider, Nav, Sidenav } from 'rsuite';
+import { Button, Divider, Nav, Sidenav, Stack } from 'rsuite';
 import styles from '../../styles/Settings.module.css';
 
 import { useSession } from 'next-auth/react';
@@ -80,6 +80,8 @@ export default function Settings(props) {
                     <div className={styles.mainPanelDiv}>
                         {mainPanelComponenet(activeKeySideNav, session)}
                     </div>
+
+
                 </div>
                 : <Custom500 />}
         </div>

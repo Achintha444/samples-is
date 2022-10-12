@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { Divider, Panel } from 'rsuite';
+import { Divider, FlexboxGrid, Panel } from 'rsuite';
 import "rsuite/dist/rsuite.min.css";
 import styles from '../../../../styles/Settings.module.css';
 
@@ -26,6 +26,8 @@ import decodeMe from '../../../../util/apiDecode/dashboard/decodeMe';
 import CoverImage from './coverImage';
 import OrgDetails from './orgDetails';
 import UserDetails from './userDetails';
+import Image from 'next/image';
+import profileImage from '../../../../public/internal/profile.svg';
 
 export default function ProfileComponent(props) {
 
@@ -43,20 +45,68 @@ export default function ProfileComponent(props) {
         <div className={styles.homeMainPanelDiv}>
             <CoverImage />
 
-            {
-                me == null
-                    ? <Panel bordered>
-                        <div>Add the user attributes in created the application to display user details</div>
-                    </Panel>
-                    : <UserDetails me={me} />
-
-
-            }
+            <ProfileImageaAndNameSection me={me} />
 
             <Divider />
 
-            <OrgDetails orgId={props.orgId} orgName={props.orgName} />
+            <FlexboxGrid>
+                <FlexboxGrid.Item colspan={14}>
+                    {
+                        me == null
+                            ? <Panel bordered style={{ height: '400px' }}>
+                                <div>Add the user attributes in created the application to display user details</div>
+                            </Panel>
+
+                            : <UserDetails me={me} />
+
+
+                    }
+                </FlexboxGrid.Item>
+
+                <FlexboxGrid.Item colspan={1}>
+                    <Divider vertical style={{ height: '44vh' }} />
+                </FlexboxGrid.Item>
+
+                <FlexboxGrid.Item colspan={7}>
+
+
+                    <OrgDetails orgId={props.orgId} orgName={props.orgName} />
+                </FlexboxGrid.Item>
+            </FlexboxGrid>
+
+
+
+
 
         </div>
     );
+}
+
+function ProfileImageaAndNameSection(props) {
+    return (
+
+        props.me === null
+            ? <></>
+            : <div style={{ marginLeft: '1rem' }}>
+                <FlexboxGrid justify="space-between" align="middle">
+
+                    <FlexboxGrid.Item colspan={4}>
+                        <div className={styles.profileImage}>
+                            <Image src={profileImage} alt="profile image" />
+                        </div>
+                    </FlexboxGrid.Item>
+                    <FlexboxGrid.Item colspan={20}>
+                        <div >
+
+                            <h1>{props.me.firstName}</h1>
+                            <h6 style={{ fontWeight: 'normal' }}>{props.me.id}</h6>
+                        </div>
+
+                    </FlexboxGrid.Item>
+
+                </FlexboxGrid>
+            </div>
+
+
+    )
 }

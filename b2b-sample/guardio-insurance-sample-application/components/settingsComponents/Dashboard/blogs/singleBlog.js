@@ -18,7 +18,7 @@
 
 import Image from 'next/image';
 import React from 'react';
-import { Button, Col, FlexboxGrid, Grid, Panel, Row, Stack } from 'rsuite';
+import { Button, Col, Divider, FlexboxGrid, Grid, Panel, Row, Stack } from 'rsuite';
 import image1 from '../../../../public/internal/news1.jpeg';
 import image2 from '../../../../public/internal/news2.jpeg';
 import image3 from '../../../../public/internal/news3.jpeg';
@@ -28,7 +28,7 @@ import { getCurrentDate } from '../../../../util/util/common/common';
 export default function SingleBlog(props) {
 
     return (
-        <div>
+        <div style={{marginTop: '1rem', marginLeft: '-20px'}}>
             <Panel>
                 <h4>{props.header}</h4>
                 <p>{getCurrentDate()}</p>
@@ -36,8 +36,7 @@ export default function SingleBlog(props) {
                 <FlexboxGrid justify='space-between'>
                     <FlexboxGrid.Item colspan={5}>
                         <div style={{ height: '100px', width: '100%', textAlign: 'center' }}>
-                            <Image src={selectImage()} alt='news image' layout='responsive'
-                                objectFit='cover' />
+                            <Image src={selectImage()} alt='news image' layout='responsive'/>
                         </div>
 
                     </FlexboxGrid.Item>
@@ -62,6 +61,7 @@ export default function SingleBlog(props) {
 
                     </FlexboxGrid.Item>
                 </FlexboxGrid>
+                <Divider />
             </Panel>
         </div>
     )

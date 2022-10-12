@@ -19,16 +19,17 @@
 import React from 'react'
 import { FlexboxGrid, Panel } from 'rsuite'
 import newsList from '../../../../util/news/news.json'
+import SettingsTitle from '../../../util/settingsTitle'
 import SingleBlog from './singleBlog'
 
 export default function BlogsComponent() {
 
     return (
-        <div style={{ marginLeft: '5px' }}>
+        <div style={{ margin: '2rem' }}>
             <br />
             <FlexboxGrid justify="start">
                 <FlexboxGrid.Item key={0} colspan={24}>
-                    <h2> Recent Blogs</h2>
+                    <SettingsTitle title='Recent Blogs' subtitle='View recent blogs by our uers' />
                 </FlexboxGrid.Item>
 
                 {
@@ -36,9 +37,8 @@ export default function BlogsComponent() {
 
                         return (
                             <FlexboxGrid.Item key={news.id * -1} colspan={24}>
-                                <Panel>
-                                    <SingleBlog imgSrc={news.image} header={news.header} body={news.body} />
-                                </Panel>
+
+                                <SingleBlog imgSrc={news.image} header={news.header} body={news.body} />
 
                             </FlexboxGrid.Item>
                         )
