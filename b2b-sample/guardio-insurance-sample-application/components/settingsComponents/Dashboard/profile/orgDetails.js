@@ -49,7 +49,7 @@ function IndividualOrgDetail(props) {
 
     return (
         <div>
-            <h4 style={{ marginBottom: '5px', fontWeight: 'normal' }}>{props.title}</h4>
+            <h5 style={{ marginBottom: '6px', fontWeight: 'normal' }}>{props.title}</h5>
             <Input readOnly value={props.value} size='lg' />
             <br />
         </div>

@@ -30,7 +30,7 @@ export default function CoverImage() {
     const imageList = [cover2, cover3, cover4, cover5];
 
     return (
-        <div style={{ width: '100%', height: '400', textAlign: 'center' }}>
+        <div style={{ width: '100%', textAlign: 'center' }}>
             <Image src={randomizeImages(imageList)} height='400' alt='news image' layout='responsive'
                 objectFit='cover' />
         </div>

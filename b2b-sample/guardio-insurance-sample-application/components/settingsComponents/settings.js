@@ -31,7 +31,8 @@ import HomeComponent from './homeComponet/homeComponent';
 import IdentityProviders from "./identity-providers/identity-providers";
 import LogoComponent from './logoComponent';
 import ViewUserComponent from './viewUserComponent';
-import ProfileComponent from './Dashboard/profile/profile';
+import ProfileComponent from './Dashboard/profile/profileComponent';
+import BlogsComponent from './Dashboard/blogs/blogsComponent';
 
 export default function Settings(props) {
 
@@ -46,6 +47,9 @@ export default function Settings(props) {
             case '1-1':
 
                 return <ProfileComponent orgName={props.name} orgId={props.orgId} session={session} />;
+            case '1-2':
+
+                return <BlogsComponent />;
             case '2-1':
 
                 return <ViewUserComponent orgName={props.name} orgId={props.orgId} session={session} />;
@@ -98,6 +102,10 @@ function SideNavSection(props) {
                     <Nav.Menu eventKey="1" title="DASBOARD" icon={<DashboardIcon />}>
                         <Nav.Item eventKey="1-1" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
                             Profile
+                        </Nav.Item>
+
+                        <Nav.Item eventKey="1-2" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                            Blogs
                         </Nav.Item>
                     </Nav.Menu>
 
