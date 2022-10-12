@@ -19,7 +19,7 @@
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
 import React, { useEffect, useState } from 'react';
-import { Button, Nav, Sidenav } from 'rsuite';
+import { Button, Divider, Nav, Sidenav } from 'rsuite';
 import styles from '../../styles/Settings.module.css';
 
 import { useSession } from 'next-auth/react';
@@ -31,6 +31,7 @@ import HomeComponent from './homeComponet/homeComponent';
 import IdentityProviders from "./identity-providers/identity-providers";
 import LogoComponent from './logoComponent';
 import ViewUserComponent from './viewUserComponent';
+import ProfileComponent from './Dashboard/profile/profile';
 
 export default function Settings(props) {
 
@@ -38,13 +39,13 @@ export default function Settings(props) {
 
     const { data: session, status } = useSession();
 
-    const [activeKeySideNav, setActiveKeySideNav] = useState('1');
+    const [activeKeySideNav, setActiveKeySideNav] = useState('1-1');
 
     const mainPanelComponenet = (activeKey, session) => {
         switch (activeKey) {
-            case '1':
+            case '1-1':
 
-                return <HomeComponent orgName={props.name} orgId={props.orgId} session={session} />;
+                return <ProfileComponent orgName={props.name} orgId={props.orgId} session={session} />;
             case '2-1':
 
                 return <ViewUserComponent orgName={props.name} orgId={props.orgId} session={session} />;
@@ -86,7 +87,7 @@ function SideNavSection(props) {
     const signOutOnClick = () => orgSignout();
 
     return (
-        <Sidenav className={styles.sideNav} defaultOpenKeys={['3', '4']}>
+        <Sidenav className={styles.sideNav} defaultOpenKeys={['1', '2']} expanded={true}>
             <Sidenav.Header>
                 <div style={{ marginTop: '35px', marginBottom: '25px' }}>
                     <LogoComponent imageSize='small' name={props.name} />
@@ -94,24 +95,27 @@ function SideNavSection(props) {
             </Sidenav.Header>
             <Sidenav.Body>
                 <Nav activeKey={props.activeKeySideNav}>
-                    <Nav.Item eventKey="1" icon={<DashboardIcon />}
-                        onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                        Dashboard
-                    </Nav.Item>
-                    <Nav.Menu eventKey="2" title="Settings" icon={<GearCircleIcon />}
-                        style={hideBasedOnScopes(props.scope)}>
-                        <Nav.Item eventKey="2-1"
-                            onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Manage Users</Nav.Item>
-                        <Nav.Item eventKey="2-3"
-                            onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Identity Providers</Nav.Item>
-                        {/* <Nav.Item
-                            eventKey="3-1"
-                            onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Manage Application
-                        </Nav.Item> */}
+                    <Nav.Menu eventKey="1" title="DASBOARD" icon={<DashboardIcon />}>
+                        <Nav.Item eventKey="1-1" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                            Profile
+                        </Nav.Item>
                     </Nav.Menu>
+
+                    <>
+                        <Divider style={hideBasedOnScopes(props.scope)} />
+
+                        <Nav.Menu eventKey="2" title="ADMIN SETTINGS" icon={<GearCircleIcon />}
+                            style={hideBasedOnScopes(props.scope)}>
+                            <Nav.Item eventKey="2-1"
+                                onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                                Manage Users</Nav.Item>
+                            <Nav.Item eventKey="2-3"
+                                onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                                Identity Providers</Nav.Item>
+
+                        </Nav.Menu>
+                    </>
+
                 </Nav>
             </Sidenav.Body>
             <div className={styles.nextButtonDiv}>

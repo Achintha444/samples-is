@@ -16,19 +16,18 @@
  * under the License.
  */
 
-import { Panel, Placeholder } from 'rsuite';
+import { Divider, Panel } from 'rsuite';
 import "rsuite/dist/rsuite.min.css";
-import styles from '../../../styles/Settings.module.css';
+import styles from '../../../../styles/Settings.module.css';
 
 import React, { useEffect, useState } from 'react';
 
-import decodeMe from '../../../util/apiDecode/dashboard/decodeMe';
-import LogoComponent from '../logoComponent';
-import LatestNewsComponent from './latestNewsComponent';
+import decodeMe from '../../../../util/apiDecode/dashboard/decodeMe';
+import CoverImage from './coverImage';
+import OrgDetails from './orgDetails';
 import UserDetails from './userDetails';
-import CoverImage from '../Dashboard/profile/coverImage';
 
-export default function HomeComponent(props) {
+export default function ProfileComponent(props) {
 
     const [me, setMe] = useState(null);
 
@@ -43,25 +42,21 @@ export default function HomeComponent(props) {
     return (
         <div className={styles.homeMainPanelDiv}>
             <CoverImage />
-            <Panel bordered>
-                <div className={styles.homePanel}>
-                    <LogoComponent imageSize='medium' />
-                    <hr />
-                    <h4 className={styles.nameTag}>{props.orgName}</h4>
-                </div>
-            </Panel>
+
             {
                 me == null
                     ? <Panel bordered>
                         <div>Add the user attributes in created the application to display user details</div>
                     </Panel>
-                    : <Panel header="User Details" bordered>
-                        <div id="userDetails" className={styles.homePanel}>
-                            <UserDetails me={me} session={props.session} />
-                        </div>
-                    </Panel>
+                    : <UserDetails me={me} />
+
+
             }
-            <LatestNewsComponent />
+
+            <Divider />
+
+            <OrgDetails orgId={props.orgId} orgName={props.orgName} />
+
         </div>
     );
 }
