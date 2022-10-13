@@ -28,7 +28,6 @@ import decodeListAllIdentityProviders from
     '../../../util/apiDecode/settings/identityProvider/decodeListAllIdentityProviders';
 import { EMPTY_STRING, ENTERPRISE_ID, FACEBOOK_ID, GOOGLE_ID } from '../../../util/util/common/common';
 import Enterprise from "../../data/templates/enterprise-identity-provider.json";
-import Facebook from "../../data/templates/facebook.json";
 import Google from "../../data/templates/google.json";
 import { errorTypeDialog, successTypeDialog } from "../../util/dialog";
 import SettingsTitle from '../../util/settingsTitle';
@@ -45,8 +44,7 @@ export default function IdentityProviders() {
 
     const templates = [
         Enterprise,
-        Google,
-        Facebook,
+        Google
     ];
 
     useEffect(() => {
@@ -95,7 +93,7 @@ export default function IdentityProviders() {
     };
 
     return (
-        <Container>
+        <Container style={{ margin: '2rem' }}>
 
             <SettingsTitle title="Identity Providers"
                 subtitle="Manage identity providers to allow users to log in to your application through them." />
