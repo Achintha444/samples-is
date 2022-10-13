@@ -54,7 +54,7 @@ export default function TableSection() {
                 </Column>
 
                 <Column width={150}>
-                    <HeaderCell>SymboL</HeaderCell>
+                    <HeaderCell>Symbol</HeaderCell>
                     <Cell dataKey="symbol" />
                 </Column>
 

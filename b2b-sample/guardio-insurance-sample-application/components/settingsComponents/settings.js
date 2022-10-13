@@ -49,18 +49,16 @@ export default function Settings(props) {
                 return <ProfileComponent orgName={props.name} orgId={props.orgId} session={session} />;
             case '1-2':
 
-                return <BlogsComponent />;
+                return <ClientsDetailsComponent />
             case '1-3':
 
-                return <ClientsDetailsComponent />
+                return <BlogsComponent />;
             case '2-1':
 
                 return <ViewUserComponent orgName={props.name} orgId={props.orgId} session={session} />;
             case '2-3':
 
                 return <IdentityProviders orgName={props.name} orgId={props.orgId} session={session} />;
-            // case '3-1':
-            //     return <Application orgName={props.name} session={session} />
         }
     }
 
@@ -109,10 +107,10 @@ function SideNavSection(props) {
                             Profile
                         </Nav.Item>
                         <Nav.Item eventKey="1-2" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Blogs
+                            Clients
                         </Nav.Item>
                         <Nav.Item eventKey="1-3" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Clients
+                            Blogs
                         </Nav.Item>
                     </Nav.Menu>
 
