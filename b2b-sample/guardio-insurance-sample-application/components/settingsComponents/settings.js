@@ -19,7 +19,7 @@
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
 import React, { useEffect, useState } from 'react';
-import { Button, Divider, Nav, Sidenav, Stack } from 'rsuite';
+import { Button, Divider, Nav, Sidenav } from 'rsuite';
 import styles from '../../styles/Settings.module.css';
 
 import { useSession } from 'next-auth/react';
@@ -27,12 +27,12 @@ import "rsuite/dist/rsuite.min.css";
 import Custom500 from '../../pages/500';
 import { checkCustomization, hideBasedOnScopes } from '../../util/util/frontendUtil/frontendUtil';
 import { orgSignout } from '../../util/util/routerUtil/routerUtil';
-import HomeComponent from './homeComponet/homeComponent';
+import BlogsComponent from './Dashboard/blogs/blogsComponent';
+import ProfileComponent from './Dashboard/profile/profileComponent';
 import IdentityProviders from "./identity-providers/identity-providers";
 import LogoComponent from './logoComponent';
 import ViewUserComponent from './viewUserComponent';
-import ProfileComponent from './Dashboard/profile/profileComponent';
-import BlogsComponent from './Dashboard/blogs/blogsComponent';
+import ClientsDetailsComponent from './Dashboard/clientsDetails/clientsDetailsComponent';
 
 export default function Settings(props) {
 
@@ -50,6 +50,9 @@ export default function Settings(props) {
             case '1-2':
 
                 return <BlogsComponent />;
+            case '1-3':
+
+                return <ClientsDetailsComponent />
             case '2-1':
 
                 return <ViewUserComponent orgName={props.name} orgId={props.orgId} session={session} />;
@@ -105,9 +108,11 @@ function SideNavSection(props) {
                         <Nav.Item eventKey="1-1" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
                             Profile
                         </Nav.Item>
-
                         <Nav.Item eventKey="1-2" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
                             Blogs
+                        </Nav.Item>
+                        <Nav.Item eventKey="1-3" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                            Clients
                         </Nav.Item>
                     </Nav.Menu>
 

@@ -28,7 +28,7 @@ export default function OrgDetails(props) {
 
                 <Grid fluid>
                     <Row>
-                        <Col xs='24'>
+                        <Col xs={24}>
 
                             <IndividualOrgDetail title='Organization Id' value={props.orgId} />
 

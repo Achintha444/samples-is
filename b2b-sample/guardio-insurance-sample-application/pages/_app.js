@@ -16,25 +16,52 @@
  * under the License.
  */
 
-import { SessionProvider } from "next-auth/react";
-import Head from "next/head";
-import "rsuite/dist/rsuite.min.css";
-import '../styles/globals.css';
-import '../styles/custom-theme.less';
-import config from '../config.json';
-
-function MyApp({ Component, pageProps }) {
-
-	return (
-		<SessionProvider session={pageProps?.session}>
-			<Head>
-				<title>{config.CUSTOMIZATION.name}</title>
-				<meta name="description" content={config.CUSTOMIZATION.name} />
-			</Head>
-
-			<Component {...pageProps} />
-		</SessionProvider>
-	)
-}
-
-export default MyApp;
+ import { SessionProvider } from "next-auth/react";
+ import Head from "next/head";
+ import "rsuite/dist/rsuite.min.css";
+ import '../styles/globals.css';
+ import '../styles/custom-theme.less';
+ import config from '../config.json';
+ import {
+	 Chart as ChartJS,
+	 CategoryScale,
+	 LinearScale,
+	 BarElement,
+	 PointElement,
+	 LineElement,
+	 Title,
+	 Tooltip,
+	 Legend,
+	 ArcElement,
+	 RadialLinearScale,
+ } from 'chart.js';
+ 
+ function MyApp({ Component, pageProps }) {
+ 
+	 ChartJS.register(
+		 CategoryScale,
+		 LinearScale,
+		 BarElement,
+		 PointElement,
+		 LineElement,
+		 ArcElement,
+		 RadialLinearScale,
+		 Title,
+		 Tooltip,
+		 Legend
+	 );
+ 
+	 return (
+		 <SessionProvider session={pageProps?.session}>
+			 <Head>
+				 <title>{config.CUSTOMIZATION.name}</title>
+				 <meta name="description" content={config.CUSTOMIZATION.name} />
+			 </Head>
+ 
+			 <Component {...pageProps} />
+		 </SessionProvider>
+	 )
+ }
+ 
+ export default MyApp;
+ 
