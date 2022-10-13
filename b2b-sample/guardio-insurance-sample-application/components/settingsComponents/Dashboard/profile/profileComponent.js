@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { Divider, FlexboxGrid, Panel } from 'rsuite';
+import { Divider, FlexboxGrid, Panel, Stack } from 'rsuite';
 import "rsuite/dist/rsuite.min.css";
 import styles from '../../../../styles/Settings.module.css';
 
@@ -47,36 +47,39 @@ export default function ProfileComponent(props) {
 
             <ProfileImageaAndNameSection me={me} />
 
-            <Divider />
+            {
+                me === null
+                    ? <br />
+                    : <Divider />
+            }
 
-            <FlexboxGrid>
+            <FlexboxGrid align='middle'>
                 <FlexboxGrid.Item colspan={14}>
                     {
-                        me == null
-                            ? <Panel bordered style={{ height: '400px' }}>
-                                <div>Add the user attributes in created the application to display user details</div>
+                        me === null
+                            ? <Panel bordered style={{ height: '260px' }}>
+                                <FlexboxGrid align='middle' justify='space-around'>
+                                    <FlexboxGrid.Item colspan={8}>
+                                        <div className={styles.profileImage}>
+                                            <Image src={profileImage} alt="profile image" />
+                                        </div>
+                                    </FlexboxGrid.Item>
+                                    <FlexboxGrid.Item colspan={14}>
+                                        <h4>Add the user attributes in created the application to display user details</h4>
+                                    </FlexboxGrid.Item>
+                                </FlexboxGrid>
                             </Panel>
-
                             : <UserDetails me={me} />
-
-
                     }
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item colspan={1}>
-                    <Divider vertical style={{ height: '44vh' }} />
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item colspan={7}>
-
-
                     <OrgDetails orgId={props.orgId} orgName={props.orgName} />
                 </FlexboxGrid.Item>
             </FlexboxGrid>
-
-
-
-
 
         </div>
     );

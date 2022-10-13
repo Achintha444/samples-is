@@ -16,9 +16,8 @@
  * under the License.
  */
 
-import Image from 'next/image';
 import React from 'react';
-import { Col, FlexboxGrid, Grid, Input, Row } from 'rsuite';
+import { Col, Grid, Input, Row } from 'rsuite';
 
 
 
@@ -26,8 +25,7 @@ export default function UserDetails(props) {
     
     return (
         <div>
-          
-
+        
             <UserDetailsSection me={props.me} />
 
         </div>
