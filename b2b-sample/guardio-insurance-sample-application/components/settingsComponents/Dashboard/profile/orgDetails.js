@@ -44,7 +44,6 @@ export default function OrgDetails(props) {
     )
 }
 
-
 function IndividualOrgDetail(props) {
 
     return (

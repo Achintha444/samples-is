@@ -65,7 +65,9 @@ export default function ProfileComponent(props) {
                                         </div>
                                     </FlexboxGrid.Item>
                                     <FlexboxGrid.Item colspan={14}>
-                                        <h4>Add the user attributes in created the application to display user details</h4>
+                                        <h4>
+                                            Add the user attributes in created the application to display user details
+                                        </h4>
                                     </FlexboxGrid.Item>
                                 </FlexboxGrid>
                             </Panel>
@@ -109,7 +111,6 @@ function ProfileImageaAndNameSection(props) {
 
                 </FlexboxGrid>
             </div>
-
 
     )
 }
