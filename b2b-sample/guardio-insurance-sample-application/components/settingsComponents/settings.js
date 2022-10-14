@@ -81,8 +81,6 @@ export default function Settings(props) {
                     <div className={styles.mainPanelDiv}>
                         {mainPanelComponenet(activeKeySideNav, session)}
                     </div>
-
-
                 </div>
                 : <Custom500 />}
         </div>

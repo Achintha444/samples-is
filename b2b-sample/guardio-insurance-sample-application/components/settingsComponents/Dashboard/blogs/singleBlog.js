@@ -54,9 +54,6 @@ export default function SingleBlog(props) {
                                 </FlexboxGrid.Item>
                             </FlexboxGrid>
 
-
-
-
                         </Stack>
 
                     </FlexboxGrid.Item>

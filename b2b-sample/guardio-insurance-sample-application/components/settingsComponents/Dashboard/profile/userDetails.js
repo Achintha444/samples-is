@@ -19,15 +19,11 @@
 import React from 'react';
 import { Col, Grid, Input, Row } from 'rsuite';
 
-
-
 export default function UserDetails(props) {
     
     return (
         <div>
-        
             <UserDetailsSection me={props.me} />
-
         </div>
     )
 }
@@ -76,4 +72,3 @@ function IndividualUserDetail(props) {
         </div>
     )
 }
-
