@@ -23,7 +23,7 @@ export default async function decodeCreateIdentityProvider(session, template, fo
 
     let model = JSON.parse(JSON.stringify(template.idp));
 
-    model = setIdpTemplate(model, template.templateId, formValues);
+    model = setIdpTemplate(session, model, template.templateId, formValues);
 
     try {
         const res = await callCreateIdentityProvider(session, model);

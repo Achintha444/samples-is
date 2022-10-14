@@ -17,7 +17,7 @@
  */
 
 import config from '../../../config.json';
-import { geetInternalApiRequestOptionsForSwitchCallWithParam } from '../../util/apiUtil/getInteralApiRequestOptions';
+import { getInternalApiRequestOptionsForSwitchCallWithParam } from '../../util/apiUtil/getInteralApiRequestOptions';
 
 export default async function callSwitchOrg(subOrgId, accessToken) {
 
@@ -25,7 +25,7 @@ export default async function callSwitchOrg(subOrgId, accessToken) {
 
         const res = await fetch(
             `${config.WSO2IS_CLIENT_URL}/api/settings/switchOrg`,
-            geetInternalApiRequestOptionsForSwitchCallWithParam(subOrgId, accessToken)
+            getInternalApiRequestOptionsForSwitchCallWithParam(subOrgId, accessToken)
         );
 
         if (res.status != 200) {
