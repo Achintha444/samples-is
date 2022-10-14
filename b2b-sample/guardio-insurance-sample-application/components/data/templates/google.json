@@ -78,7 +78,7 @@
               "options": [],
               "defaultValue": "",
               "subProperties": [],
-              "readOnly": true
+              "readOnly": false
             },
             {
               "key": "AdditionalQueryParameters",
