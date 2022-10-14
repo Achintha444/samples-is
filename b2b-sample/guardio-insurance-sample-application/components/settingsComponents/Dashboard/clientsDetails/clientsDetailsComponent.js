@@ -34,7 +34,7 @@ export default function ClientsDetailsComponent() {
             <Stack direction='column' alignItems='flex-start' spacing={30} style={{ width: '100%' }}>
                 <FlexboxGrid justify="start">
                     <FlexboxGrid.Item key={0} colspan={24}>
-                        <SettingsTitle title='Clients Details' subtitle='Indepth details about the clients' />
+                        <SettingsTitle title='Product Usage' subtitle='Indepth details of the product usage' />
                     </FlexboxGrid.Item>
                 </FlexboxGrid>
                 <></>
@@ -42,25 +42,25 @@ export default function ClientsDetailsComponent() {
 
             <FlexboxGrid justify="space-between" >
                 <FlexboxGrid.Item key={0} colspan={6}>
-                    <IndividualCard title='Clients Count' text='100'>
+                    <IndividualCard title='Number of Connections' text='100'>
                         <PeoplesIcon style={{ fontSize: '3em' }} />
                     </IndividualCard>
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item key={0} colspan={5}>
-                    <IndividualCard title='Clients Growth' text='24+'>
+                    <IndividualCard title='Connection Growth' text='24+'>
                         <PeopleExpandIcon style={{ fontSize: '3em' }} />
                     </IndividualCard>
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item key={0} colspan={5}>
-                    <IndividualCard title='Interactions' text='35'>
+                    <IndividualCard title='Transactions' text='35'>
                         <PeopleBranchIcon style={{ fontSize: '3em' }} />
                     </IndividualCard>
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item key={0} colspan={6}>
-                    <IndividualCard title='Sales' text='56'>
+                    <IndividualCard title='Usages' text='56'>
                         <BarLineChartIcon style={{ fontSize: '3em' }} />
                     </IndividualCard>
                 </FlexboxGrid.Item>

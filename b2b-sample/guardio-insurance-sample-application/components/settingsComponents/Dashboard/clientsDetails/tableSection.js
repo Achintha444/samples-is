@@ -21,13 +21,28 @@ import { Table } from 'rsuite';
 
 export default function TableSection() {
 
+    function nameToMonth(data) {
+
+        const months = ["January", "Feburary", "March", "April", "May", "June", "July", "Augest", "September",
+            "October", "November", "December"];
+
+        data.forEach(mapFuction);
+
+        function mapFuction(crytpo, index, array) {
+            crytpo.name = months[index];
+            crytpo.id = index+1;
+        }
+
+        return data;
+    }
+
     const [data, setData] = useState({});
 
     useEffect(() => {
         const fetchPrices = async () => {
             const res = await fetch("https://api.coincap.io/v2/assets/?limit=10");
             const data = await res.json()
-            setData(data.data);
+            setData(nameToMonth(data.data));
         };
 
         fetchPrices();
@@ -79,7 +94,7 @@ export default function TableSection() {
                 </Column>
 
                 <Column flexGrow={1}>
-                    <HeaderCell>Price USD ($)</HeaderCell>
+                    <HeaderCell>Price in USD</HeaderCell>
                     <Cell dataKey="priceUsd" />
                 </Column>
             </Table>

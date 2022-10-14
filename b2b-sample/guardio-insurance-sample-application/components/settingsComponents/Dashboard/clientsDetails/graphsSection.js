@@ -23,17 +23,35 @@ import { checkIfJSONisEmpty } from '../../../../util/util/common/common';
 
 export default function GraphsSection() {
 
+    function nameToMonth(data) {
+
+        const months = ["January", "Feburary", "March", "April", "May", "June", "July", "Augest", "September",
+            "October", "November", "December"];
+
+        data.forEach(mapFuction);
+
+        function mapFuction(crytpo, index, array) {
+            crytpo.name = months[index];
+        }
+
+        return data;
+
+    }
+
     useEffect(() => {
         const fetchPrices = async () => {
-            const res = await fetch("https://api.coincap.io/v2/assets/?limit=10");
-            const data = await res.json()
+            const res = await fetch("https://api.coincap.io/v2/assets/?limit=12");
+            const data = await res.json();
+
+            const dataValues = nameToMonth(data.data);
+
             setChartData({
                 labels: data.data.map((crypto) => crypto.name),
                 datasets: [
                     {
                         fill: true,
                         label: "Price in USD",
-                        data: data.data.map((crypto) => crypto.priceUsd > 10 ? Math.random() * 8 : crypto.priceUsd),
+                        data: dataValues.map((crypto) => crypto.priceUsd > 10 ? Math.random() * 8 : crypto.priceUsd),
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: [
                             "#ffbb11",

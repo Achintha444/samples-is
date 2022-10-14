@@ -46,13 +46,13 @@ export default function Settings(props) {
         switch (activeKey) {
             case '1-1':
 
-                return <ProfileComponent orgName={props.name} orgId={props.orgId} session={session} />;
+                return <ClientsDetailsComponent />
             case '1-2':
 
-                return <ClientsDetailsComponent />
+                return <BlogsComponent />;
             case '1-3':
 
-                return <BlogsComponent />;
+                return <ProfileComponent orgName={props.name} orgId={props.orgId} session={session} />;
             case '2-1':
 
                 return <ViewUserComponent orgName={props.name} orgId={props.orgId} session={session} />;
@@ -102,13 +102,13 @@ function SideNavSection(props) {
                 <Nav activeKey={props.activeKeySideNav}>
                     <Nav.Menu eventKey="1" title="DASBOARD" icon={<DashboardIcon />}>
                         <Nav.Item eventKey="1-1" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Profile
+                            Product Usage
                         </Nav.Item>
                         <Nav.Item eventKey="1-2" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Clients
+                            Blogs
                         </Nav.Item>
                         <Nav.Item eventKey="1-3" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Blogs
+                            Profile
                         </Nav.Item>
                     </Nav.Menu>
 
