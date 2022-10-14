@@ -61,7 +61,7 @@ function getInternalApibBodyForSwitchCall(subOrgId, param) {
     return body;
 }
 
-function geetInternalApiRequestOptionsForSwitchCallWithParam(subOrgId, param) {
+function getInternalApiRequestOptionsForSwitchCallWithParam(subOrgId, param) {
     const request = {
         method: RequestMethod.POST,
         body: JSON.stringify(getInternalApibBodyForSwitchCall(subOrgId, param))
@@ -72,5 +72,5 @@ function geetInternalApiRequestOptionsForSwitchCallWithParam(subOrgId, param) {
 
 module.exports = {
     getInternalApiRequestOptions, getInternalApiRequestOptionsWithParam,
-    geetInternalApiRequestOptionsForSwitchCallWithParam
+    getInternalApiRequestOptionsForSwitchCallWithParam
 }
