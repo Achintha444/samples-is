@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
         </Head>
-        <body className={pageProps.session ? 'dark-mode' : 'light-mode'}>
+        <body>
           <Main />
           <NextScript />
         </body>

@@ -86,7 +86,7 @@ function IdentityProviderDetailsHeader(props) {
 		<Stack>
 			<Stack>
 				<Avatar
-					style={{ background: '#000', marginRight: "20px" }}
+					style={{ background: '#fff', marginRight: "20px" }}
 					size="lg"
 					circle
 					src={props.idpDetails.image}

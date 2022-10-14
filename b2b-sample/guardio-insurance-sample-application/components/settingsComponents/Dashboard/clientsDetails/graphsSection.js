@@ -35,7 +35,6 @@ export default function GraphsSection() {
         }
 
         return data;
-
     }
 
     useEffect(() => {

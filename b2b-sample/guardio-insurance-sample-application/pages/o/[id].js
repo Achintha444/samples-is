@@ -42,9 +42,7 @@ export async function getServerSideProps(context) {
 				props: { session },
 			}
 		}
-
 	}
-
 }
 
 export default function Org(props) {

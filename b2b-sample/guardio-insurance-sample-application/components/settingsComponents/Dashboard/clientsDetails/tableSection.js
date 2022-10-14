@@ -52,7 +52,7 @@ export default function TableSection() {
 
     return (
         <div>
-            <h4>Client Information</h4>
+            <h4>Monthly Overview</h4>
 
             <br />
 

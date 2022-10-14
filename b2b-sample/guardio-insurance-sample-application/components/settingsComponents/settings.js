@@ -28,11 +28,13 @@ import Custom500 from '../../pages/500';
 import { checkCustomization, hideBasedOnScopes } from '../../util/util/frontendUtil/frontendUtil';
 import { orgSignout } from '../../util/util/routerUtil/routerUtil';
 import BlogsComponent from './Dashboard/blogs/blogsComponent';
+import ClientsDetailsComponent from './Dashboard/clientsDetails/clientsDetailsComponent';
+import IndividualUsage from './Dashboard/myUsage/myUsageComponent';
 import ProfileComponent from './Dashboard/profile/profileComponent';
 import IdentityProviders from "./identity-providers/identity-providers";
 import LogoComponent from './logoComponent';
 import ViewUserComponent from './viewUserComponent';
-import ClientsDetailsComponent from './Dashboard/clientsDetails/clientsDetailsComponent';
+import DataUsageComponent from './dataUsage/dataUsageComponent';
 
 export default function Settings(props) {
 
@@ -40,13 +42,19 @@ export default function Settings(props) {
 
     const { data: session, status } = useSession();
 
-    const [activeKeySideNav, setActiveKeySideNav] = useState('1-1');
+    const [activeKeySideNav, setActiveKeySideNav] = useState('1-1-1');
 
     const mainPanelComponenet = (activeKey, session) => {
         switch (activeKey) {
-            case '1-1':
+            case '1-0':
 
                 return <ClientsDetailsComponent />
+            case '1-1-1':
+
+                return <IndividualUsage />
+            case '1-1-2':
+
+                return <DataUsageComponent />
             case '1-2':
 
                 return <BlogsComponent />;
@@ -67,7 +75,7 @@ export default function Settings(props) {
     }
 
     useEffect(() => {
-        document.body.className = checkCustomization(props.colorTheme)
+        //document.body.className = checkCustomization(props.colorTheme)
     }, [props.colorTheme]);
 
     return (
@@ -92,7 +100,7 @@ function SideNavSection(props) {
     const signOutOnClick = () => orgSignout();
 
     return (
-        <Sidenav className={styles.sideNav} defaultOpenKeys={['1', '2']} expanded={true}>
+        <Sidenav className={styles.sideNav} defaultOpenKeys={['1', '1-1', '2']} expanded={true}>
             <Sidenav.Header>
                 <div style={{ marginTop: '35px', marginBottom: '25px' }}>
                     <LogoComponent imageSize='small' name={props.name} />
@@ -101,13 +109,21 @@ function SideNavSection(props) {
             <Sidenav.Body>
                 <Nav activeKey={props.activeKeySideNav}>
                     <Nav.Menu eventKey="1" title="DASBOARD" icon={<DashboardIcon />}>
-                        <Nav.Item eventKey="1-1" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
-                            Product Usage
-                        </Nav.Item>
+                        <Nav.Menu eventKey="1-1" title="My Usage">
+                            <Nav.Item eventKey="1-1-1" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                                Cloud Storage
+                            </Nav.Item>
+                            <Nav.Item eventKey="1-1-2"
+                                onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                                Internet Usage</Nav.Item>
+                        </Nav.Menu>
+
                         <Nav.Item eventKey="1-2" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
                             Blogs
                         </Nav.Item>
-                        <Nav.Item eventKey="1-3" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+
+                        <Nav.Item eventKey="1-3" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}
+                            style={hideBasedOnScopes(props.scope)}>
                             Profile
                         </Nav.Item>
                     </Nav.Menu>
@@ -117,16 +133,17 @@ function SideNavSection(props) {
 
                         <Nav.Menu eventKey="2" title="ADMIN SETTINGS" icon={<GearCircleIcon />}
                             style={hideBasedOnScopes(props.scope)}>
+                            <Nav.Item eventKey="1-0" onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
+                                Overall Usage
+                            </Nav.Item>
                             <Nav.Item eventKey="2-1"
                                 onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
                                 Manage Users</Nav.Item>
                             <Nav.Item eventKey="2-3"
                                 onSelect={(eventKey) => props.activeKeySideNavSelect(eventKey)}>
                                 Identity Providers</Nav.Item>
-
                         </Nav.Menu>
                     </>
-
                 </Nav>
             </Sidenav.Body>
             <div className={styles.nextButtonDiv}>

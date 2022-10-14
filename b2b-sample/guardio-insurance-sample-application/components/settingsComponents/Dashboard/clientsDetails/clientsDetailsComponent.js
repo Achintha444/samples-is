@@ -34,7 +34,7 @@ export default function ClientsDetailsComponent() {
             <Stack direction='column' alignItems='flex-start' spacing={30} style={{ width: '100%' }}>
                 <FlexboxGrid justify="start">
                     <FlexboxGrid.Item key={0} colspan={24}>
-                        <SettingsTitle title='Product Usage' subtitle='Indepth details of the product usage' />
+                        <SettingsTitle title='Overall Usage' subtitle='Indepth details of the overall usage' />
                     </FlexboxGrid.Item>
                 </FlexboxGrid>
                 <></>
