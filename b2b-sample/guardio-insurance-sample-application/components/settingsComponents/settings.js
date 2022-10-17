@@ -24,22 +24,20 @@ import styles from '../../styles/Settings.module.css';
 
 import "rsuite/dist/rsuite.min.css";
 import Custom500 from '../../pages/500';
-import { checkCustomization, hideBasedOnScopes } from '../../util/util/frontendUtil/frontendUtil';
+import { hideBasedOnScopes } from '../../util/util/frontendUtil/frontendUtil';
 import { orgSignout } from '../../util/util/routerUtil/routerUtil';
 import BlogsComponent from './Dashboard/blogs/blogsComponent';
 import ClientsDetailsComponent from './Dashboard/clientsDetails/clientsDetailsComponent';
 import IndividualUsage from './Dashboard/myUsage/myUsageComponent';
 import ProfileComponent from './Dashboard/profile/profileComponent';
+import DataUsageComponent from './dataUsage/dataUsageComponent';
 import IdentityProviders from "./identity-providers/identity-providers";
 import LogoComponent from './logoComponent';
 import ViewUserComponent from './viewUserComponent';
-import DataUsageComponent from './dataUsage/dataUsageComponent';
 
 export default function Settings(props) {
 
     const SETTINGS_UI = "settings interface"
-
-    const { data: session, status } = useSession();
 
     const [activeKeySideNav, setActiveKeySideNav] = useState('1-1-1');
 
@@ -59,7 +57,7 @@ export default function Settings(props) {
                 return <BlogsComponent />;
             case '1-3':
 
-                return <ProfileComponent orgName={props.name} orgId={props.orgId} session={session} />;
+                return <ProfileComponent orgName={props.name} orgId={props.orgId} session={props.session} />;
             case '2-1':
 
                 return <ViewUserComponent orgName={props.name} orgId={props.orgId} session={props.session} />;
