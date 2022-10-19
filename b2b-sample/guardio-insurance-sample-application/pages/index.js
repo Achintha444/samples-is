@@ -17,8 +17,10 @@
  */
 
 import Image from 'next/image'
-import { Button } from 'rsuite'
-import homeImage from '../public/internal/home.jpeg'
+import { Button, Divider, FlexboxGrid } from 'rsuite'
+import homeImage from '../public/internal/home.svg'
+import homeImage2 from '../public/internal/home.jpeg'
+import logoWhiteImage from '../public/logo2.png'
 import styles from '../styles/Home.module.css'
 
 import { useRouter } from 'next/router'
@@ -38,19 +40,54 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div>
+
       <main className={styles.main}>
 
         <div className={styles.homeImageDiv}>
-          <Image src={homeImage} className={styles.homeImage} alt="home image" />
+
+          <div className={styles.homeImage} >
+            <LogoComponent original={true} imageSize='small' />
+            <Image src={homeImage} alt="home image" />
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <h3>Solutions Tailored to Fit Your Business</h3>
+            <p>We partner with you to create custom combinations of tech products and services that drive the outcomes
+              your business needs.</p>
+
+          </div>
+
+          <div className={styles.orgsList}>
+            <ul>
+              <li> <a href="" class="a_top_hypers"> Small Business</a></li>
+            </ul>
+
+            <ul>
+              <li> <a href="" class="a_top_hypers"> Enterprise & medium business</a></li>
+            </ul>
+
+            <ul>
+              <li> <a href="" class="a_top_hypers"> Public Sector</a></li>
+            </ul>
+
+          </div>
         </div>
 
+        {/* <div className={styles.homeImageDiv}>
+          <LogoComponent imageSize='small' />
+          <div className={styles.homeImageNewDiv}>
+            <Image src={homeImage2} className={styles.homeImage} alt="home image" />
+          </div>
+
+        </div> */}
+
         <div className={styles.signInDiv}>
-          <LogoComponent imageSize='x-large' />
+          <LogoComponent original={false} white={true} imageSize='medium' />
 
           <hr />
           <p className={styles.buttonTag}>Let&apos;s get your journey started. </p>
-          <Button className={styles.signInDivButton} size="lg" appearance='primary'
+          <Button className={styles.signInDivButton} size="lg" appearance='default'
             onClick={signinOnClick}>Sign In</Button>
         </div>
 

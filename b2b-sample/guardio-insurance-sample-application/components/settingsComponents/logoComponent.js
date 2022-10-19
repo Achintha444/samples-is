@@ -24,8 +24,8 @@ export default function LogoComponent(props) {
 
     return (
         <div className={styles.logoDiv}>
-            <Logo imageSize={props.imageSize} />
-            <p className={styles.nameTag}>{config.CUSTOMIZATION.tag} </p>
+            <Logo imageSize={props.imageSize} original={props.original} white={props.white}/>
+
             {
                 props.name
                     ? <>

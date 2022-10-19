@@ -23,20 +23,42 @@
 }
 
 .homeImageDiv {
-  width: 50vw;
+  width: 66vw;
   height: 100vh;
   display: flex;
-  overflow: auto;
   flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  gap: 50px;
 }
 
 .homeImage {
-  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orgsList {
+  display: flex;
+  gap: 60px;
+
+}
+
+.orgsList ul li {
+  float: right;
+}
+
+.logoWhiteImage {
+  opacity: 1;
+  width: 10vw;
 }
 
 .signInDiv {
-  background-color: #0071f309;
-  width: 50vw;
+  background-color: #d32d1f;
+  width: 25vw;
   padding: 4rem 4rem;
   display: flex;
   align-items: center;
@@ -44,6 +66,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   flex: 1;
+  color: #eaeaea;
 }
 
 .nameTag {

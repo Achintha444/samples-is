@@ -42,6 +42,9 @@ export default function TableSection() {
             crytpo.name = months[index];
             crytpo.id = index+1;
             crytpo.symbol = makeid(4);
+            crytpo.supply = (parseFloat(crytpo.supply)/10000000).toFixed(0);
+            crytpo.priceUsd = (parseFloat(crytpo.priceUsd)).toFixed(2);
+
         }
 
         return data;
@@ -95,17 +98,12 @@ export default function TableSection() {
                 </Column>
 
                 <Column flexGrow={1}>
-                    <HeaderCell>Supply</HeaderCell>
+                    <HeaderCell>Number of Connections</HeaderCell>
                     <Cell dataKey="supply" />
                 </Column>
 
-                <Column flexGrow={1}>
-                    <HeaderCell>Change Percent</HeaderCell>
-                    <Cell dataKey="changePercent24Hr" />
-                </Column>
-
-                <Column flexGrow={1}>
-                    <HeaderCell>Price in USD</HeaderCell>
+                <Column flexGrow={2}>
+                    <HeaderCell>Connetion Price</HeaderCell>
                     <Cell dataKey="priceUsd" />
                 </Column>
             </Table>
