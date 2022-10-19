@@ -21,7 +21,17 @@ import { Table } from 'rsuite';
 
 export default function TableSection() {
 
-    function nameToMonth(data) {
+    const makeid = (length) => {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+    
+    const nameToMonth = (data) => {
 
         const months = ["January", "Feburary", "March", "April", "May", "June", "July", "Augest", "September",
             "October", "November", "December"];
@@ -31,6 +41,7 @@ export default function TableSection() {
         function mapFuction(crytpo, index, array) {
             crytpo.name = months[index];
             crytpo.id = index+1;
+            crytpo.symbol = makeid(4);
         }
 
         return data;
