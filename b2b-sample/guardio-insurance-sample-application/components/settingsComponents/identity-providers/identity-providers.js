@@ -119,7 +119,7 @@ export default function IdentityProviders(props) {
                             />
                         }
                     </FlexboxGrid>
-                    : <></>
+                    : null
             }
 
             {
