@@ -19,22 +19,31 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
-  render() {
-    const pageProps = this.props?.__NEXT_DATA__?.props?.pageProps;
 
-    return (
-      <Html>
-        <Head>
-          <link rel="shortcut icon" href="/favicon.png" />
-          <meta httpEquiv='cache-control' content='no-cache' />
-          <meta httpEquiv='expires' content='0' />
-          <meta httpEquiv='pragma' content='no-cache' />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+    render() {
+        const pageProps = this.props?.__NEXT_DATA__?.props?.pageProps;
+
+        const fontUrl = "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;" +
+            "0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap";
+
+        return (
+            <Html>
+                <Head>
+                    <link rel="shortcut icon" href="/favicon.png" />
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" />
+                    <link
+                        href={fontUrl}
+                        rel="stylesheet" />
+                    <meta httpEquiv='cache-control' content='no-cache' />
+                    <meta httpEquiv='expires' content='0' />
+                    <meta httpEquiv='pragma' content='no-cache' />
+                </Head>
+                <body>
+                    <Main />
+                    <NextScript />
+                </body>
+            </Html>
+        );
+    }
 }

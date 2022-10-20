@@ -22,6 +22,7 @@ const withLess = require("next-with-less");
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  optimizeFonts: false
 }
 
 module.exports = nextConfig

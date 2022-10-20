@@ -31,6 +31,5 @@ a {
 
 * {
     box-sizing: border-box;
-    font-family: "Nunito Sans", Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-        Bitstream Vera Sans Mono, Courier New, monospace;
+    font-family: 'Nunito Sans', sans-serif;
 }

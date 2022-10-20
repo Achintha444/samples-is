@@ -38,7 +38,7 @@ export default function Logo(props) {
                 break;
         }
     }
-    console.log(props.original);
+
     return (
         <div style={switchImageSize(props.imageSize)}>
             {
