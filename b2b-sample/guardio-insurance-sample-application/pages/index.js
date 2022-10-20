@@ -60,15 +60,15 @@ export default function Home() {
 
           <div className={styles.orgsList}>
             <ul>
-              <li> <a href="" class="a_top_hypers"> Small Business</a></li>
+              <li> <a href=""> Small Business</a></li>
             </ul>
 
             <ul>
-              <li> <a href="" class="a_top_hypers"> Enterprise & medium business</a></li>
+              <li> <a href=""> Enterprise & medium business</a></li>
             </ul>
 
             <ul>
-              <li> <a href="" class="a_top_hypers"> Public Sector</a></li>
+              <li> <a href=""> Public Sector</a></li>
             </ul>
 
           </div>
