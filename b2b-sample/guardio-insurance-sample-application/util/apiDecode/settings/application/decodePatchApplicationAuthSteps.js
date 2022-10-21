@@ -89,6 +89,7 @@ export default async function decodePatchApplicationAuthSteps(session, template,
     let idpTempleteId = idpDetails.templateId;
 
     let authenticationSequenceModel = {
+        "claimConfiguration": {},
         "authenticationSequence": addRemoveAuthSequence(template, idpTempleteId, idpName, method)
     }
 
