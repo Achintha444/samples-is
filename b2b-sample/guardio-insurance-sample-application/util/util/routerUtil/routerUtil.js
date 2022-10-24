@@ -17,9 +17,7 @@
  */
 
 import cookie from "cookie";
-import FrontCookie from 'js-cookie';
 import { signIn, signOut } from 'next-auth/react';
-import { getRouterQuery } from '../orgUtil/orgUtil';
 import config from '../../../config.json';
 
 function redirect(path) {
@@ -39,28 +37,27 @@ function parseCookies(req) {
 
 function orgSignin(orgId) {
     if (orgId) {
-        FrontCookie.set("orgId", orgId);
         signIn("wso2is", { callbackUrl: `/o/moveOrg` }, { orgId: orgId });
     } else {
         signIn("wso2is", { callbackUrl: `/o/moveOrg` });
     }
 }
 
-function orgSignout() {
-    FrontCookie.remove("orgId");
-    signOut({ callbackUrl: "/" });
+async function orgSignout(beforeFunc, afterFunc) {
+    beforeFunc();
+    signOut({ callbackUrl: "/" }).finally(()=>afterFunc());
 }
 
 function emptySession(session) {
     if (session === null || session === undefined) {
 
-        return redirect('/signin');
+        return redirect("/signin");
     }
 }
 
 function parseJwt(token) {
 
-    return JSON.parse(Buffer.from(token.split('.')[1], 'base64'));
+    return JSON.parse(Buffer.from(token.split(".")[1], "base64"));
 }
 
 function getLoggedUserId(token) {
@@ -69,24 +66,22 @@ function getLoggedUserId(token) {
 }
 
 function getOrgId(token) {
-
     try {
 
-        return config.SAMPLE_ORGS[0].id;
+        return parseJwt(token).org_id;
     } catch (error) {
 
-        return parseJwt(token).org_id;
+        return config.SAMPLE_ORGS[0].id;
     }
 }
 
 function getOrgName(token) {
-
     try {
 
-        return config.SAMPLE_ORGS[0].name;
+        return parseJwt(token).org_name;
     } catch (error) {
 
-        return parseJwt(token).org_name;
+        return config.SAMPLE_ORGS[0].name;
     }
 }
 

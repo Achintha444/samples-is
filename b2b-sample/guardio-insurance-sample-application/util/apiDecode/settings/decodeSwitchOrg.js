@@ -16,19 +16,22 @@
  * under the License.
  */
 
+import config from "../../../config.json";
 import callSwitchOrg from "../../apiCall/settings/callSwitchOrg";
 import { commonDecode } from "../../util/apiUtil/commonDecode";
-import { parseCookies } from '../../util/routerUtil/routerUtil';
-import config from '../../../config.json';
 
 function getSubOrgId(token) {
     
     try {
 
-        return config.SAMPLE_ORGS[0].id;
+        if (!token.user.user_organization) {
+            return token.user.org_id;
+        }
+
+        return token.user.user_organization;
     } catch (error) {
 
-        return token.user.federated_org;
+        return config.SAMPLE_ORGS[0].id;
     }
 
 }
