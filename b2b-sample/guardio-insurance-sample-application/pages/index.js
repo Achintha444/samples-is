@@ -16,17 +16,15 @@
  * under the License.
  */
 
-import Image from 'next/image'
-import { Button, Divider, FlexboxGrid } from 'rsuite'
-import homeImage from '../public/internal/home.svg'
-import homeImage2 from '../public/internal/home.jpeg'
-import logoWhiteImage from '../public/logo2.png'
-import styles from '../styles/Home.module.css'
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { Button } from "rsuite";
+import homeImage from "../public/internal/home.svg";
+import styles from "../styles/Home.module.css";
 
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import "rsuite/dist/rsuite.min.css"
-import LogoComponent from '../components/settingsComponents/logoComponent'
+import "rsuite/dist/rsuite.min.css";
+import LogoComponent from "../components/common/logo/logoComponent";
 
 /**
  * 
@@ -43,57 +41,60 @@ export default function Home() {
         document.body.className = "";
     }, []);
 
-  return (
-    <div>
+    return (
+        <div>
 
-      <main className={styles.main}>
+            <main className={ styles.main }>
 
-        <div className={styles.homeImageDiv}>
+                <div className={ styles.homeImageDiv }>
 
-          <div className={styles.homeImage} >
-            <LogoComponent original={true} imageSize='small' />
-            <Image src={homeImage} alt="home image" />
-          </div>
+                    <div className={ styles.homeImage } >
+                        <LogoComponent original={ true } imageSize="small" />
+                        <Image src={ homeImage } alt="home image" />
+                    </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <h3>Solutions Tailored to Fit Your Business</h3>
-            <p>We partner with you to create custom combinations of tech products and services that drive the outcomes
+                    <div style={ { textAlign: "center" } }>
+                        <h3>Solutions Tailored to Fit Your Business</h3>
+                        <p>We partner with you to create custom combinations of tech products and services that drive the outcomes
               your business needs.</p>
 
-          </div>
+                    </div>
 
-          <div className={styles.orgsList}>
-            <ul>
-              <li> <a href=""> Small Business</a></li>
-            </ul>
+                    <div className={ styles.orgsList }>
+                        <ul>
+                            <li> <a href=""> Small Business</a></li>
+                        </ul>
 
-            <ul>
-              <li> <a href=""> Enterprise & medium business</a></li>
-            </ul>
+                        <ul>
+                            <li> <a href=""> Enterprise & medium business</a></li>
+                        </ul>
 
-            <ul>
-              <li> <a href=""> Public Sector</a></li>
-            </ul>
+                        <ul>
+                            <li> <a href=""> Public Sector</a></li>
+                        </ul>
 
-          </div>
-        </div>
+                    </div>
+                </div>
 
-        {/* <div className={styles.homeImageDiv}>
+                { /* <div className={styles.homeImageDiv}>
           <LogoComponent imageSize='small' />
           <div className={styles.homeImageNewDiv}>
             <Image src={homeImage2} className={styles.homeImage} alt="home image" />
           </div>
 
-        </div> */}
+        </div> */ }
 
-        <div className={styles.signInDiv}>
-          <LogoComponent original={false} white={true} imageSize='medium' />
+                <div className={ styles.signInDiv }>
+                    <LogoComponent original={ false } white={ true } imageSize="medium" />
 
-          <hr />
-          <p className={styles.buttonTag}>Let&apos;s get your journey started. </p>
-          <Button className={styles.signInDivButton} size="lg" appearance='default'
-            onClick={signinOnClick}>Sign In</Button>
-        </div>
+                    <hr />
+                    <p className={ styles.buttonTag }>Let&apos;s get your journey started. </p>
+                    <Button
+                        className={ styles.signInDivButton }
+                        size="lg"
+                        appearance="default"
+                        onClick={ signinOnClick }>Sign In</Button>
+                </div>
 
             </main>
 

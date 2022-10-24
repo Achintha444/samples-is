@@ -16,33 +16,28 @@
  * under the License.
  */
 
+import Image from "next/image";
 import React from "react";
-import Logo from "./logo";
-import config from "../../../config.json";
-import styles from "../../../styles/Settings.module.css";
 
-/**
- * 
- * @param prop - name (org name), imageSize (small, medium, large, x-large)
- *
- * @returns 
- */
-export default function LogoComponent(prop) {
+import cover2 from "../../../../../public/internal/cover2.jpeg";
+import cover3 from "../../../../../public/internal/cover3.jpeg";
+import cover4 from "../../../../../public/internal/cover4.jpeg";
+import cover5 from "../../../../../public/internal/cover5.jpeg";
+import {randomizeImages} from "../../../../../util/util/common/common";
 
-    let { name, imageSize, original, white } = prop;
+export default function CoverImage() {
+
+    const imageList = [cover2, cover3, cover4, cover5];
 
     return (
-        <div className={ styles.logoDiv }>
-            <Logo imageSize={ imageSize } original={original} white={white}/>
-            {
-                name
-                    ? (<>
-                        <hr />
-                        <h5 className={ styles.nameTag }>{ name }</h5>
-                        <hr />
-                    </>)
-                    : null
-            }
+        <div style={{ width: "100%", textAlign: "center" }}>
+            <Image
+                src={randomizeImages(imageList)}
+                height="400"
+                alt="news image"
+                layout="responsive"
+                objectFit="cover" />
         </div>
+
     );
 }

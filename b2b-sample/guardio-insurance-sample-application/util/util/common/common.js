@@ -67,6 +67,6 @@ const GOOGLE_AUTHENTICATOR_ID = "GoogleOIDCAuthenticator";
 const ENTERPRISE_AUTHENTICATOR_ID = "OpenIDConnectAuthenticator";
 
 module.exports = {
-    stringIsEmpty, getCurrentDate, copyTheTextToClipboard, checkIfJSONisEmpty, sizeOfJson, GOOGLE_ID,ENTERPRISE_ID, 
-    EMPTY_STRING, GOOGLE_AUTHENTICATOR_ID, ENTERPRISE_AUTHENTICATOR_ID
+    stringIsEmpty, getCurrentDate, copyTheTextToClipboard, checkIfJSONisEmpty, sizeOfJson, randomizeImages,
+    GOOGLE_ID,ENTERPRISE_ID, EMPTY_STRING, GOOGLE_AUTHENTICATOR_ID, ENTERPRISE_AUTHENTICATOR_ID
 };

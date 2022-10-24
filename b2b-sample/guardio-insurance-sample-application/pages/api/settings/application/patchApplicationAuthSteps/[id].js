@@ -38,6 +38,7 @@ export default async function patchApplicationAuthSteps(req, res) {
             `${config.WSO2IS_HOST}/o/${subOrgId}/api/server/v1/applications/${id}`,
             getSentDataRequestOptions(session, RequestMethod.PATCH, model)
         );
+
         console.log(fetchData);
         const data = await fetchData;
 
