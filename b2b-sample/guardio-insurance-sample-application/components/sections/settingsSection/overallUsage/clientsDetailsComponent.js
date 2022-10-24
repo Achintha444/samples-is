@@ -80,21 +80,24 @@ export default function ClientsDetailsComponent() {
     );
 }
 
-function IndividualCard(props) {
+function IndividualCard(prop) {
+
+    const { title, text, children } = prop;
+
     return (
         <Panel bordered>
-            <p>{ props.title }</p>
+            <p>{ title }</p>
 
             <br />
 
             <FlexboxGrid align="bottom" justify="space-between">
                 <FlexboxGrid.Item key={ 0 } colspan={ 14 }>
-                    <h1 style={ { fontSize: "80px" } }>{ props.text }</h1>
+                    <h1 style={ { fontSize: "80px" } }>{ text }</h1>
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item key={ 1 } colspan={ 6 }>
                     <div>
-                        { props.children }
+                        { children }
                     </div>
                 </FlexboxGrid.Item>
             </FlexboxGrid>

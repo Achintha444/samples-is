@@ -52,7 +52,7 @@ export default function Custom500() {
                                     textAlign: "center",
                                     top: -100
                                 } }><b>It looks like you have been inactive for a long time.</b> <br />
-                                When you click on <i>Go back</i>, we will try to recover the session if it exists. <br />
+                                When you click on <i>Go back</i>, we will try to recover the session if it exists.<br />
                                 If you don&apos;t have an active session, you will be redirected to the login page.</p>
                             <Button
                                 style={ {

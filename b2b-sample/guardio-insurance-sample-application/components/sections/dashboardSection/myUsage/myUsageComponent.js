@@ -32,11 +32,8 @@ export default function MyUsageComponent() {
     const [ chartData, setChartData ] = useState({});
 
     const usageData = {
-        labels: [ "Used", "Available" ],
         datasets: [
-            {
-                label: "Storage",
-                data: [ 20, 5 ],
+            {   
                 backgroundColor: [
                     "rgba(255, 99, 132, 0.2)",
                     "rgba(54, 162, 235, 0.2)"
@@ -45,9 +42,12 @@ export default function MyUsageComponent() {
                     "rgba(255, 99, 132, 1)",
                     "rgba(54, 162, 235, 1)"
                 ],
-                borderWidth: 1
+                borderWidth: 1,
+                data: [ 20, 5 ],
+                label: "Storage"
             }
-        ]
+        ],
+        labels: [ "Used", "Available" ]
     };
 
     function nameToMonth(data) {
@@ -57,7 +57,7 @@ export default function MyUsageComponent() {
 
         data.forEach(mapFuction);
 
-        function mapFuction(crytpo, index, array) {
+        function mapFuction(crytpo, index) {
             crytpo.name = months[index];
         }
 
@@ -72,22 +72,22 @@ export default function MyUsageComponent() {
             const dataValues = nameToMonth(data.data);
 
             setChartData({
-                labels: data.data.map((crypto) => crypto.name),
                 datasets: [
-                    {
-                        fill: true,
-                        label: "Price in USD",
-                        data: dataValues.map((crypto) => crypto.priceUsd > 10 ? Math.random() * 8 : crypto.priceUsd),
-                        borderColor: "rgb(255, 99, 132)",
+                    {   
                         backgroundColor: [
                             "#ffbb11",
                             "#ecf0f1",
                             "#50AF95",
                             "#f3ba2f",
                             "#2a71d0"
-                        ]
+                        ],
+                        borderColor: "rgb(255, 99, 132)",
+                        data: dataValues.map((crypto) => crypto.priceUsd > 10 ? Math.random() * 8 : crypto.priceUsd),
+                        fill: true,
+                        label: "Price in USD"
                     }
-                ]
+                ],
+                labels: data.data.map((crypto) => crypto.name)
             });
         };
 
@@ -155,10 +155,11 @@ export default function MyUsageComponent() {
                             <Panel bordered style={ { height: "19vh" } }>
                                 <div
                                     style={ {
-                                        width: "100%", height: "15vh",
+                                        alignItems: "center",
                                         display: "flex",
+                                        height: "15vh",
                                         justifyContent: "center",
-                                        alignItems: "center"
+                                        width: "100%"
                                     } }>
                                     <Stack direction="column" spacing={ 10 }>
                                         <FileUploadIcon style={ { fontSize: "3em" } } />
@@ -199,7 +200,10 @@ export default function MyUsageComponent() {
     );
 }
 
-function IndividualCard(props) {
+function IndividualCard(prop) {
+
+    const { children, title, value } = prop;
+
     return (
         <Panel bordered>
             <FlexboxGrid align="middle" justify="space-between">
@@ -207,12 +211,12 @@ function IndividualCard(props) {
                     <FlexboxGrid align="middle" justify="start">
                         <FlexboxGrid.Item key={ 1 - 1 } colspan={ 6 }>
                             <div>
-                                { props.children }
+                                { children }
                             </div>
                         </FlexboxGrid.Item>
                         <FlexboxGrid.Item key={ 1 - 2 } colspan={ 18 }>
-                            <h3>{ props.title }</h3>
-                            <h5 style={ { fontWeight: "normal" } }>{ props.value } Files</h5>
+                            <h3>{ title }</h3>
+                            <h5 style={ { fontWeight: "normal" } }>{ value } Files</h5>
                         </FlexboxGrid.Item>
                     </FlexboxGrid>
                 </FlexboxGrid.Item>

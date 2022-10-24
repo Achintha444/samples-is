@@ -19,32 +19,36 @@
 import React from "react";
 import { Col, Grid, Input, Row } from "rsuite";
 
-export default function UserDetails(props) {
+export default function UserDetails(prop) {
+
+    const { me } = prop;
     
     return (
         <div>
-            <UserDetailsSection me={ props.me } />
+            <UserDetailsSection me={ me } />
         </div>
     );
 }
 
-function UserDetailsSection(props) {
+function UserDetailsSection(prop) {
+
+    const { me } = prop;
 
     return (
         <div style={ { margin: "20px" } }>
-            <h3 style={ { marginTop: "30px", fontWeight: "normal" } }>Profile Details</h3>
+            <h3 style={ { fontWeight: "normal", marginTop: "30px" } }>Profile Details</h3>
             <div style={ { margin: "20px" } }>
                 <Grid fluid>
                     <Row>
                         <Col xs="24">
 
-                            <IndividualUserDetail title="First Name" value={ props.me.firstName } />
+                            <IndividualUserDetail title="First Name" value={ me.firstName } />
 
-                            <IndividualUserDetail title="Last Name" value={ props.me.familyName }/>
+                            <IndividualUserDetail title="Last Name" value={ me.familyName }/>
 
-                            <IndividualUserDetail title="Username" value={ props.me.username } />
+                            <IndividualUserDetail title="Username" value={ me.username } />
 
-                            <IndividualUserDetail title="Email" value={ props.me.email } />
+                            <IndividualUserDetail title="Email" value={ me.email } />
 
                         </Col>
                     </Row>
@@ -57,14 +61,16 @@ function UserDetailsSection(props) {
     );
 }
 
-function IndividualUserDetail(props) {
+function IndividualUserDetail(prop) {
+
+    const { title, value } = prop;
 
     return (
         <div>
-            <h5 style={ { marginBottom: "6px", fontWeight: "normal" } }>{ props.title }</h5>
-            <Input readOnly value={ props.value } size="lg"/>
+            <h5 style={ { fontWeight: "normal", marginBottom: "6px" } }>{ title }</h5>
+            <Input readOnly value={ value } size="lg"/>
             {
-                props.title==="Email"
+                title==="Email"
                     ? <></>
                     :  <br />
             }

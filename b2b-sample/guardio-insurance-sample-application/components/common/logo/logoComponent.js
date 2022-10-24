@@ -18,7 +18,6 @@
 
 import React from "react";
 import Logo from "./logo";
-import config from "../../../config.json";
 import styles from "../../../styles/Settings.module.css";
 
 /**
@@ -33,7 +32,7 @@ export default function LogoComponent(prop) {
 
     return (
         <div className={ styles.logoDiv }>
-            <Logo imageSize={ imageSize } original={original} white={white}/>
+            <Logo imageSize={ imageSize } original={ original } white={ white }/>
             {
                 name
                     ? (<>

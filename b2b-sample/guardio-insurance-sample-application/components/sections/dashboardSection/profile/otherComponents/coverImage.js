@@ -23,16 +23,16 @@ import cover2 from "../../../../../public/internal/cover2.jpeg";
 import cover3 from "../../../../../public/internal/cover3.jpeg";
 import cover4 from "../../../../../public/internal/cover4.jpeg";
 import cover5 from "../../../../../public/internal/cover5.jpeg";
-import {randomizeImages} from "../../../../../util/util/common/common";
+import { randomizeImages } from "../../../../../util/util/common/common";
 
 export default function CoverImage() {
 
-    const imageList = [cover2, cover3, cover4, cover5];
+    const imageList = [ cover2, cover3, cover4, cover5 ];
 
     return (
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div style={ { textAlign: "center" , width: "100%" } }>
             <Image
-                src={randomizeImages(imageList)}
+                src={ randomizeImages(imageList) }
                 height="400"
                 alt="news image"
                 layout="responsive"

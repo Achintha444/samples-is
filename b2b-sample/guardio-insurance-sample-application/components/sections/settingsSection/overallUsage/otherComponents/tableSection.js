@@ -40,7 +40,7 @@ export default function TableSection() {
 
         data.forEach(mapFuction);
 
-        function mapFuction(crytpo, index, array) {
+        function mapFuction(crytpo, index) {
             crytpo.name = months[index];
             crytpo.id = index + 1;
             crytpo.symbol = makeid(4);
@@ -76,9 +76,6 @@ export default function TableSection() {
             <Table
                 height={ 600 }
                 data={ data }
-                onRowClick={ rowData => {
-                    console.log(rowData);
-                } }
             >
                 <Column width={ 200 } align="center" fixed>
                     <HeaderCell>Id</HeaderCell>

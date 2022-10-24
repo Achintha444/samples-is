@@ -39,7 +39,6 @@ export default async function patchApplicationAuthSteps(req, res) {
             getSentDataRequestOptions(session, RequestMethod.PATCH, model)
         );
 
-        console.log(fetchData);
         const data = await fetchData;
 
         res.status(200).json(data);

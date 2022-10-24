@@ -16,31 +16,31 @@
  * under the License.
  */
 
-import { Divider, FlexboxGrid, Panel, Stack } from "rsuite";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Divider, FlexboxGrid, Panel } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import CoverImage from "./otherComponents/coverImage";
 import OrgDetails from "./otherComponents/orgDetails";
 import UserDetails from "./otherComponents/userDetails";
 import profileImage from "../../../../public/internal/profile.svg";
 import styles from "../../../../styles/Settings.module.css";
-
-import React, { useEffect, useState } from "react";
-
 import decodeMe from "../../../../util/apiDecode/dashboard/decodeMe";
-import Image from "next/image";
 
-export default function ProfileComponent(props) {
+export default function ProfileComponent(prop) {
+
+    const { session, orgId, orgName } = prop;
 
     const [ me, setMe ] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
-            const res = await decodeMe(props.session);
+            const res = await decodeMe(session);
 
             setMe(res);
         }
         fetchData();
-    }, [ props ]);
+    }, [ session ]);
 
     return (
         <div className={ styles.homeMainPanelDiv }>
@@ -80,7 +80,7 @@ export default function ProfileComponent(props) {
                 </FlexboxGrid.Item>
 
                 <FlexboxGrid.Item colspan={ 7 }>
-                    <OrgDetails orgId={ props.orgId } orgName={ props.orgName } />
+                    <OrgDetails orgId={ orgId } orgName={ orgName } />
                 </FlexboxGrid.Item>
             </FlexboxGrid>
 
@@ -88,10 +88,13 @@ export default function ProfileComponent(props) {
     );
 }
 
-function ProfileImageaAndNameSection(props) {
+function ProfileImageaAndNameSection(prop) {
+
+    const { me } = prop;
+
     return (
 
-        props.me === null
+        me === null
             ? <></>
             : (<div style={ { marginLeft: "1rem" } }>
                 <FlexboxGrid justify="space-between" align="middle">
@@ -104,8 +107,8 @@ function ProfileImageaAndNameSection(props) {
                     <FlexboxGrid.Item colspan={ 20 }>
                         <div >
 
-                            <h1>{ props.me.firstName }</h1>
-                            <h6 style={ { fontWeight: "normal" } }>{ props.me.id }</h6>
+                            <h1>{ me.firstName }</h1>
+                            <h6 style={ { fontWeight: "normal" } }>{ me.id }</h6>
                         </div>
 
                     </FlexboxGrid.Item>

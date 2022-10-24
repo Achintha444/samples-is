@@ -17,8 +17,8 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { Bar, Line, Radar } from "react-chartjs-2";
-import { Divider, FlexboxGrid, Panel } from "rsuite";
+import { Bar, Line } from "react-chartjs-2";
+import { FlexboxGrid, Panel } from "rsuite";
 import { checkIfJSONisEmpty } from "../../../../../util/util/common/common";
 
 export default function GraphsSection() {
@@ -30,7 +30,7 @@ export default function GraphsSection() {
 
         data.forEach(mapFuction);
 
-        function mapFuction(crytpo, index, array) {
+        function mapFuction(crytpo, index) {
             crytpo.name = months[index];
         }
 
@@ -45,22 +45,22 @@ export default function GraphsSection() {
             const dataValues = nameToMonth(data.data);
 
             setChartData({
-                labels: data.data.map((crypto) => crypto.name),
                 datasets: [
-                    {
-                        fill: true,
-                        label: "Price in USD",
-                        data: dataValues.map((crypto) => crypto.priceUsd > 10 ? Math.random() * 8 : crypto.priceUsd),
-                        borderColor: "rgb(255, 99, 132)",
+                    {   
                         backgroundColor: [
                             "#ffbb11",
                             "#ecf0f1",
                             "#50AF95",
                             "#f3ba2f",
                             "#2a71d0"
-                        ]
+                        ],
+                        borderColor: "rgb(255, 99, 132)",
+                        data: dataValues.map((crypto) => crypto.priceUsd > 10 ? Math.random() * 8 : crypto.priceUsd),
+                        fill: true,
+                        label: "Price in USD"
                     }
-                ]
+                ],
+                labels: data.data.map((crypto) => crypto.name)
             });
         };
 
@@ -84,13 +84,13 @@ export default function GraphsSection() {
                                     data={ chartData }
                                     options={ {
                                         plugins: {
-                                            title: {
-                                                display: true,
-                                                text: "Connection Rates"
-                                            },
                                             legend: {
                                                 display: true,
                                                 position: "bottom"
+                                            },
+                                            title: {
+                                                display: true,
+                                                text: "Connection Rates"
                                             }
                                         }
                                     } } />
@@ -107,13 +107,13 @@ export default function GraphsSection() {
                                     data={ chartData }
                                     options={ {
                                         plugins: {
-                                            title: {
-                                                display: true,
-                                                text: "Connection Prices"
-                                            },
                                             legend: {
                                                 display: true,
                                                 position: "bottom"
+                                            },
+                                            title: {
+                                                display: true,
+                                                text: "Connection Prices"
                                             }
                                         }
                                     } } />

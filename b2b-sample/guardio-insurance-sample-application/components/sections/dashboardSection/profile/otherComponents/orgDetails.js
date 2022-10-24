@@ -19,7 +19,9 @@
 import React from "react";
 import { Col, Grid, Input, Row } from "rsuite";
 
-export default function OrgDetails(props) {
+export default function OrgDetails(prop) {
+
+    const { orgId, orgName } = prop;
 
     return (
         <div style={ { margin: "20px" } }>
@@ -30,9 +32,9 @@ export default function OrgDetails(props) {
                     <Row>
                         <Col xs={ 24 }>
 
-                            <IndividualOrgDetail title="Organization Id" value={ props.orgId } />
+                            <IndividualOrgDetail title="Organization Id" value={ orgId } />
 
-                            <IndividualOrgDetail title="Organization Name" value={ props.orgName } />
+                            <IndividualOrgDetail title="Organization Name" value={ orgName } />
 
                         </Col>
                     </Row>
@@ -44,12 +46,14 @@ export default function OrgDetails(props) {
     );
 }
 
-function IndividualOrgDetail(props) {
+function IndividualOrgDetail(prop) {
+
+    const { title, value } = prop;
 
     return (
         <div>
-            <h5 style={ { marginBottom: "6px", fontWeight: "normal" } }>{ props.title }</h5>
-            <Input readOnly value={ props.value } size="lg" />
+            <h5 style={ { fontWeight: "normal", marginBottom: "6px" } }>{ title }</h5>
+            <Input readOnly value={ value } size="lg" />
             <br />
         </div>
     );

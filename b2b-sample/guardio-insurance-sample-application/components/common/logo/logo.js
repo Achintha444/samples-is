@@ -22,7 +22,9 @@ import logoImage from "../../../public/logo.png";
 import logoImage2 from "../../../public/logo2.png";
 import logoImage3 from "../../../public/logo3.png";
 
-export default function Logo(props) {
+export default function Logo(prop) {
+
+    const { imageSize, original, white } = prop;
 
     function switchImageSize(size) {
         switch (size) {
@@ -40,15 +42,14 @@ export default function Logo(props) {
     }
 
     return (
-        <div style={ switchImageSize(props.imageSize) }>
+        <div style={ switchImageSize(imageSize) }>
             {
-                props.original
+                original
                     ? <Image src={ logoImage3 } alt="404 image" />
-                    : props.white
+                    : white
                         ? <Image src={ logoImage2 } alt="404 image" />
                         : <Image src={ logoImage } alt="404 image" />
             }
-
         </div>
     );
 }

@@ -18,13 +18,12 @@
 
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button } from "rsuite";
-import homeImage from "../public/internal/home.svg";
-import styles from "../styles/Home.module.css";
-
 import "rsuite/dist/rsuite.min.css";
 import LogoComponent from "../components/common/logo/logoComponent";
+import homeImage from "../public/internal/home.svg";
+import styles from "../styles/Home.module.css";
 
 /**
  * 
@@ -55,9 +54,8 @@ export default function Home() {
 
                     <div style={ { textAlign: "center" } }>
                         <h3>Solutions Tailored to Fit Your Business</h3>
-                        <p>We partner with you to create custom combinations of tech products and services that drive the outcomes
-              your business needs.</p>
-
+                        <p>We partner with you to create custom combinations of tech products and services that drive 
+                            the outcomesyour business needs.</p>
                     </div>
 
                     <div className={ styles.orgsList }>

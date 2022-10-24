@@ -16,51 +16,51 @@
  * under the License.
  */
 
- import { SessionProvider } from "next-auth/react";
- import Head from "next/head";
- import "rsuite/dist/rsuite.min.css";
- import '../styles/globals.css';
- import '../styles/custom-theme.less';
- import config from '../config.json';
- import {
-	 Chart as ChartJS,
-	 CategoryScale,
-	 LinearScale,
-	 BarElement,
-	 PointElement,
-	 LineElement,
-	 Title,
-	 Tooltip,
-	 Legend,
-	 ArcElement,
-	 RadialLinearScale,
- } from 'chart.js';
- 
- function MyApp({ Component, pageProps }) {
- 
-	 ChartJS.register(
-		 CategoryScale,
-		 LinearScale,
-		 BarElement,
-		 PointElement,
-		 LineElement,
-		 ArcElement,
-		 RadialLinearScale,
-		 Title,
-		 Tooltip,
-		 Legend
-	 );
- 
-	 return (
-		 <SessionProvider session={pageProps?.session}>
-			 <Head>
-				 <title>{config.CUSTOMIZATION.name}</title>
-				 <meta name="description" content={config.CUSTOMIZATION.name} />
-			 </Head>
- 
-			 <Component {...pageProps} />
-		 </SessionProvider>
-	 )
- }
- 
- export default MyApp;
+import {
+    ArcElement,
+    BarElement,
+    CategoryScale,
+    Chart as ChartJS,
+    Legend, LineElement, LinearScale, PointElement,
+    RadialLinearScale,
+    Title,
+    Tooltip
+} from "chart.js";
+import { SessionProvider } from "next-auth/react";
+import Head from "next/head";
+import React from "react";
+import "rsuite/dist/rsuite.min.css";
+import config from "../config.json";
+import "../styles/custom-theme.less";
+import "../styles/globals.css";
+
+function MyApp(prop) {
+
+    const { Component, pageProps } = prop;
+
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        BarElement,
+        PointElement,
+        LineElement,
+        ArcElement,
+        RadialLinearScale,
+        Title,
+        Tooltip,
+        Legend
+    );
+
+    return (
+        <SessionProvider session={ pageProps ? pageProps.session : null }>
+            <Head>
+                <title>{ config.CUSTOMIZATION.name }</title>
+                <meta name="description" content={ config.CUSTOMIZATION.name } />
+            </Head>
+
+            <Component { ...pageProps } />
+        </SessionProvider>
+    );
+}
+
+export default MyApp;
