@@ -19,7 +19,7 @@
 import DashboardIcon from "@rsuite/icons/legacy/Dashboard";
 import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
 import React, { useEffect, useState } from "react";
-import { Button, Nav, Sidenav } from "rsuite";
+import { Button, Divider, Nav, Sidenav } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import BlogsComponent from "./dashboardSection/blogs/blogsComponent";
 import DataUsageComponent from "./dashboardSection/dataUsage/dataUsageComponent";
@@ -80,10 +80,6 @@ export default function Home(prop) {
     const signOutModalClose = () => {
         setSignOutModalOpen(false);
     };
-
-    useEffect(() => {
-        document.body.className = checkCustomization(colorTheme);
-    }, [ colorTheme ]);
 
     return (
         <div>
