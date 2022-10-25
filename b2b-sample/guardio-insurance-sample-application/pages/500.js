@@ -17,25 +17,18 @@
  */
 
 import Image from "next/image";
-import React, { useState } from "react";
-import { Button, Col, Grid, Loader, Row } from "rsuite";
+import React from "react";
+import { Button, Col, Grid, Row } from "rsuite";
 import error500Image from "../public/internal/500.svg";
 import style from "../styles/Error.module.css";
-import { LOADING_DISPLAY_BLOCK, LOADING_DISPLAY_NONE } from "../util/util/frontendUtil/frontendUtil";
 import { orgSignout } from "../util/util/routerUtil/routerUtil";
 
 export default function Custom500() {
-    
-    const [ loadingDisplay, setLoadingDisplay ] = useState(LOADING_DISPLAY_NONE);
 
-    const goBack = async () => await orgSignout(() => setLoadingDisplay(LOADING_DISPLAY_BLOCK),
-        () => setLoadingDisplay(LOADING_DISPLAY_NONE));
+    const goBack = async () => await orgSignout(null);
 
     return (
         <div className={ style.errorMainContent }>
-            <div style={ loadingDisplay }>
-                <Loader size="lg" backdrop content="User is logging out" vertical />
-            </div>
             <Grid>
                 <Row>
                     <Col sm={ 24 } md={ 6 } lg={ 3 } />

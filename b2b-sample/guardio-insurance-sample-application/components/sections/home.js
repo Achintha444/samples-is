@@ -19,7 +19,7 @@
 import DashboardIcon from "@rsuite/icons/legacy/Dashboard";
 import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
 import React, { useEffect, useState } from "react";
-import { Button, Divider, Loader, Nav, Sidenav } from "rsuite";
+import { Button, Nav, Sidenav } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import BlogsComponent from "./dashboardSection/blogs/blogsComponent";
 import DataUsageComponent from "./dashboardSection/dataUsage/dataUsageComponent";
@@ -30,10 +30,9 @@ import ManageUserSectionComponent from "./settingsSection/manageUserSection/mana
 import ClientsDetailsComponent from "./settingsSection/overallUsage/clientsDetailsComponent";
 import Custom500 from "../../pages/500";
 import styles from "../../styles/Settings.module.css";
-import { LOADING_DISPLAY_BLOCK, LOADING_DISPLAY_NONE, checkCustomization, hideBasedOnScopes }
-    from "../../util/util/frontendUtil/frontendUtil";
-import { orgSignout } from "../../util/util/routerUtil/routerUtil";
+import { checkCustomization, hideBasedOnScopes } from "../../util/util/frontendUtil/frontendUtil";
 import LogoComponent from "../common/logo/logoComponent";
+import SignOutModal from "../common/signOutModal";
 
 /**
  * 
@@ -45,8 +44,8 @@ export default function Home(prop) {
 
     const { name, orgId, session, colorTheme } = prop;
 
-    const [ loadingDisplay, setLoadingDisplay ] = useState(LOADING_DISPLAY_NONE);
     const [ activeKeySideNav, setActiveKeySideNav ] = useState("1-1-1");
+    const [ signOutModalOpen, setSignOutModalOpen ] = useState(false);
 
     const mainPanelComponenet = (activeKey) => {
         switch (activeKey) {
@@ -78,20 +77,26 @@ export default function Home(prop) {
         setActiveKeySideNav(eventKey);
     };
 
+    const signOutModalClose = () => {
+        setSignOutModalOpen(false);
+    };
+
+    useEffect(() => {
+        document.body.className = checkCustomization(colorTheme);
+    }, [ colorTheme ]);
+
     return (
         <div>
+            <SignOutModal session={ session } open={ signOutModalOpen } onClose={ signOutModalClose } />
             { session && session.scope
                 ? (<div className={ styles.mainDiv }>
-                    <div style={ loadingDisplay }>
-                        <Loader size="lg" backdrop content="User is logging out" vertical />
-                    </div>
                     <div className={ styles.sideNavDiv }>
                         <SideNavSection
                             name={ name }
                             scope={ session.scope }
                             activeKeySideNav={ activeKeySideNav }
                             activeKeySideNavSelect={ activeKeySideNavSelect }
-                            setLoadingDisplay={ setLoadingDisplay } />
+                            setSignOutModalOpen={ setSignOutModalOpen } />
                     </div>
                     <div className={ styles.mainPanelDiv }>
                         { mainPanelComponenet(activeKeySideNav, session) }
@@ -104,10 +109,9 @@ export default function Home(prop) {
 
 function SideNavSection(prop) {
 
-    const { name, scope, activeKeySideNav, activeKeySideNavSelect, setLoadingDisplay } = prop;
+    const { name, scope, activeKeySideNav, activeKeySideNavSelect, setSignOutModalOpen } = prop;
 
-    const signOutOnClick = async () => await orgSignout(() => setLoadingDisplay(LOADING_DISPLAY_BLOCK),
-        () => setLoadingDisplay(LOADING_DISPLAY_NONE));
+    const signOutOnClick = () => setSignOutModalOpen(true);
 
     return (
         <Sidenav className={ styles.sideNav } defaultOpenKeys={ [ "1", "1-1", "2" ] } expanded={ true }>
