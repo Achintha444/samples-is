@@ -23,15 +23,14 @@ import Enterprise from "./data/templates/enterprise-identity-provider.json";
 import Google from "./data/templates/google.json";
 import IdentityProviderList from "./otherComponents/identityProviderList";
 import styles from "../../../../styles/idp.module.css";
-import decodeCreateIdentityProvider from
-    "../../../../util/apiDecode/settings/identityProvider/decodeCreateIdentityProvider";
-import decodeListAllIdentityProviders from
-    "../../../../util/apiDecode/settings/identityProvider/decodeListAllIdentityProviders";
-import { EMPTY_STRING, ENTERPRISE_ID, GOOGLE_ID, checkIfJSONisEmpty, sizeOfJson } from
-    "../../../../util/util/common/common";
+import decodeCreateIdentityProvider
+    from "../../../../util/apiDecode/settings/identityProvider/decodeCreateIdentityProvider";
+import decodeListAllIdentityProviders
+    from "../../../../util/apiDecode/settings/identityProvider/decodeListAllIdentityProviders";
+import { EMPTY_STRING, ENTERPRISE_ID, GOOGLE_ID, checkIfJSONisEmpty, sizeOfJson }
+    from "../../../../util/util/common/common";
 import { errorTypeDialog, successTypeDialog } from "../../../common/dialog";
 import SettingsTitle from "../../../common/settingsTitle";
-import settingsStyles from "../../../../styles/Settings.module.css";
 
 /**
  * 
@@ -158,7 +157,7 @@ export default function IdpSectionComponent(prop) {
     };
 
     return (
-        <div style={{ margin : "32px"}}>
+        <div style={{ margin: "32px" }}>
             <Container>
 
                 <SettingsTitle

@@ -18,7 +18,7 @@
 
 import DashboardIcon from "@rsuite/icons/legacy/Dashboard";
 import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Divider, Nav, Sidenav } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import BlogsComponent from "./dashboardSection/blogs/blogsComponent";
@@ -30,7 +30,7 @@ import ManageUserSectionComponent from "./settingsSection/manageUserSection/mana
 import ClientsDetailsComponent from "./settingsSection/overallUsage/clientsDetailsComponent";
 import Custom500 from "../../pages/500";
 import styles from "../../styles/Settings.module.css";
-import { checkCustomization, hideBasedOnScopes } from "../../util/util/frontendUtil/frontendUtil";
+import { hideBasedOnScopes } from "../../util/util/frontendUtil/frontendUtil";
 import LogoComponent from "../common/logo/logoComponent";
 import SignOutModal from "../common/signOutModal";
 
@@ -42,7 +42,7 @@ import SignOutModal from "../common/signOutModal";
  */
 export default function Home(prop) {
 
-    const { name, orgId, session, colorTheme } = prop;
+    const { name, orgId, session } = prop;
 
     const [ activeKeySideNav, setActiveKeySideNav ] = useState("1-1-1");
     const [ signOutModalOpen, setSignOutModalOpen ] = useState(false);
